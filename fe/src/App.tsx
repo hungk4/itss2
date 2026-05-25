@@ -5,7 +5,7 @@ import FlashcardsList from "./pages/FlashcardsList";
 import StudySession from "./pages/StudySession";
 import QuizSession from "./pages/QuizSession";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = (import.meta as any).env.VITE_API_BASE_URL || "http://localhost:5000";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>("dashboard");
