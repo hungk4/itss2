@@ -12,17 +12,16 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
     { id: "study", label: "Ôn tập", icon: Brain },
     { id: "quiz", label: "Quiz", icon: FileQuestion },
   ];
-
   return (
     <nav className="bg-white border-b border-slate-200 sticky top-0 z-50 px-4 sm:px-6 py-3 flex items-center justify-between shadow-sm">
-      <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setActiveTab("dashboard")}>
+      <div className="flex items-center space-x-3 cursor-pointer shrink-0" onClick={() => setActiveTab("dashboard")}>
         <div className="bg-gradient-to-tr from-indigo-500 to-purple-500 p-2 rounded-xl text-white shadow-sm">
           <Brain className="h-6 w-6" />
         </div>
         <span className="font-bold text-xl tracking-tight text-gradient">AuraCards</span>
       </div>
 
-      <div className="flex items-center space-x-1">
+      <div className="flex-1 flex justify-center items-center space-x-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = activeTab === item.id;
@@ -42,6 +41,8 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
           );
         })}
       </div>
+
+      <div className="w-[135px] hidden sm:block shrink-0"></div>
     </nav>
   );
 }
