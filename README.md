@@ -42,12 +42,6 @@ npm run dev
 
 ---
 
-## 🔑 Tài khoản Demo sẵn có
-Bạn có thể sử dụng thông tin đăng nhập sau để chạy thử nghiệm các tính năng lập tức:
-- **Email**: `demo@example.com`
-- **Mật khẩu**: `password123`
-
----
 
 ## 📁 Cấu trúc thư mục dự án
 ```txt
