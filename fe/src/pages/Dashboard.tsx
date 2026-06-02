@@ -67,6 +67,37 @@ export default function Dashboard({ apiBaseUrl, setActiveTab }: DashboardProps) 
         <p className="text-slate-500 text-sm">Dưới đây là tổng quan về lộ trình ôn luyện từ vựng của bạn.</p>
       </div>
 
+      {/* Reminder Banner */}
+      {data.dueCards > 0 ? (
+        <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+          <div className="flex items-center space-x-3">
+            <div className="bg-amber-100 p-2.5 rounded-xl text-amber-700 shrink-0">
+              <Brain className="h-5 w-5 animate-pulse" />
+            </div>
+            <div>
+              <h4 className="font-bold text-sm text-slate-800">🔔 Từ cần ôn hôm nay</h4>
+              <p className="text-xs text-slate-600">Bạn đang có <span className="font-bold text-amber-700">{data.dueCards} từ vựng</span> đến hạn ôn tập. Hãy dành ít phút ôn tập ngay để củng cố kiến thức nhé!</p>
+            </div>
+          </div>
+          <button
+            onClick={() => setActiveTab("study")}
+            className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl text-xs font-bold shadow-sm transition active:scale-[0.98] shrink-0"
+          >
+            Ôn tập ngay
+          </button>
+        </div>
+      ) : (
+        <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-4 flex items-center space-x-3 shadow-sm">
+          <div className="bg-emerald-100 p-2.5 rounded-xl text-emerald-700 shrink-0">
+            <CheckCircle className="h-5 w-5" />
+          </div>
+          <div>
+            <h4 className="font-bold text-sm text-slate-800">🎉 Tuyệt vời! Không có từ cần ôn hôm nay</h4>
+            <p className="text-xs text-slate-600">Bạn đã hoàn thành tất cả các thẻ đến lịch ôn tập. Hãy giữ vững phong độ nhé!</p>
+          </div>
+        </div>
+      )}
+
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="bg-white p-5 rounded-2xl border border-slate-200 flex items-center justify-between shadow-sm">

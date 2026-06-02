@@ -3,13 +3,14 @@ import { BookOpen, BarChart3, Brain, FileQuestion } from "lucide-react";
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  dueCount?: number;
 }
 
-export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
+export default function Navbar({ activeTab, setActiveTab, dueCount = 0 }: NavbarProps) {
   const navItems = [
     { id: "dashboard", label: "Trang chủ", icon: BarChart3 },
     { id: "flashcards", label: "Flashcard", icon: BookOpen },
-    { id: "study", label: "Ôn tập", icon: Brain },
+    { id: "study", label: "Ôn tập", icon: Brain, badge: dueCount > 0 ? dueCount : undefined },
     { id: "quiz", label: "Quiz", icon: FileQuestion },
   ];
   return (
@@ -37,6 +38,11 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             >
               <Icon className="h-4 w-4" />
               <span className="hidden sm:inline">{item.label}</span>
+              {item.badge !== undefined && (
+                <span className="bg-rose-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shrink-0 min-w-[16px] text-center ml-1">
+                  {item.badge}
+                </span>
+              )}
             </button>
           );
         })}
